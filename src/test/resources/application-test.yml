@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:palakendra;MODE=MySQL;DB_CLOSE_DELAY=-1;DATABASE_TO_LOWER=TRUE
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+  flyway:
+    locations: classpath:db/migration/common, classpath:db/migration/{vendor}
+  sql:
+    init:
+      mode: never
+
+jwt:
+  secret: "this-is-a-long-64plus-char-secret-for-tests-1234567890-abcdef-xyz"
+  expiration-minutes: 60
+
+logging:
+  level:
+    org.springframework.security: WARN
+    org.hibernate.SQL: WARN
