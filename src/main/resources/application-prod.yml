@@ -1,5 +1,5 @@
 server:
-  port: 8080   # defaults to 8080 if PORT is not set
+  port: ${PORT:8080}  # defaults to 8080 if PORT is not set
 
 spring:
   datasource:
