@@ -38,8 +38,23 @@ public class PalakendraApplication {
 	}
 
 
-//	@Bean
-//	CommandLineRunner printHash(PasswordEncoder enc) {
-//		return args -> System.out.println(enc.encode("admin@123"));
-//	}
+	@Bean
+	@Profile("prod")
+	CommandLineRunner printHash(PasswordEncoder enc) {
+		return args -> System.out.println("checking...." + enc.encode("admin@123"));
+	}
+
+
+
+	@Bean
+	@Profile("prod")
+	CommandLineRunner verifyProdPassword(UserRepository repo, PasswordEncoder enc) {
+		return args -> repo.findByUsername("admin").ifPresent(u -> {
+			System.out.println("=== PASSWORD DIAG ===");
+			System.out.println("Has prefix? " + u.getPassword().startsWith("{bcrypt}"));
+			System.out.println("Matches admin@123? " + enc.matches("admin@123", u.getPassword()));
+			System.out.println("Stored sample: " + u.getPassword().substring(0, Math.min(20, u.getPassword().length())));
+			System.out.println("=====================");
+		});
+	}
 }
