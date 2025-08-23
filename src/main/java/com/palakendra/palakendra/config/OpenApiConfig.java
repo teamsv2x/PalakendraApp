@@ -6,7 +6,15 @@ import org.springframework.context.annotation.Bean; import org.springframework.c
 @Configuration
 public class OpenApiConfig {
     @Bean GroupedOpenApi publicApi() {
-        return GroupedOpenApi.builder().group("api").pathsToMatch("/api/**").build();
+
+        return GroupedOpenApi.builder()
+                .group("api")
+                .pathsToMatch("/api/**")
+                .packagesToScan(
+                        "com.palakendra.palakendra.web",        // put your controller packages here
+                        "com.palakendra.palakendra.controller"  // (add/remove as appropriate)
+                )
+                .build();
     }
 }
 
