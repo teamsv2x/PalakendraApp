@@ -13,6 +13,7 @@ public class MilkEntry {
     private Long id;
 
     @ManyToOne(optional = false) @JoinColumn(name = "customer_org_id")
+    @com.fasterxml.jackson.annotation.JsonIgnore
     private CustomerOrganization customerOrg;
 
     @Column(name = "entry_date", nullable = false)

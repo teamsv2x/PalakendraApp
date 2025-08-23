@@ -16,5 +16,6 @@ public class Organization {
 
     @OneToOne(optional = false)
     @JoinColumn(name = "manager_user_id", nullable = false, unique = true)
+    @com.fasterxml.jackson.annotation.JsonIgnore
     private User manager; // must have role MANAGER
 }

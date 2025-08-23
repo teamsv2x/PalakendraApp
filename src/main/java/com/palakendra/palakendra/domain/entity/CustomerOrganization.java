@@ -16,10 +16,12 @@ public class CustomerOrganization {
     private Long id;
 
     @ManyToOne(optional = false)
+    @com.fasterxml.jackson.annotation.JsonIgnore
     @JoinColumn(name = "customer_id", nullable = false)
     private CustomerProfile customer;
 
     @ManyToOne(optional = false)
+    @com.fasterxml.jackson.annotation.JsonIgnore
     @JoinColumn(name = "organization_id", nullable = false)
     private Organization organization;
 
