@@ -19,6 +19,8 @@ spring:
 
 logging:
   level:
+    org.springdoc: DEBUG
+    org.springframework.web: DEBUG
     org.springframework.security: DEBUG
 
 jwt:
@@ -31,6 +33,8 @@ springdoc:
     path: /v3/api-docs
   swagger-ui:
     path: /swagger-ui.html
-    url: /v3/api-docs/api   # load your "api" group
+    url: /v3/api-docs/api
+
+
 
 
